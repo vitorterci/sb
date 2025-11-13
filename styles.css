@@ -1,0 +1,137 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0fff0;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2e7d32;
+}
+
+.carousel-row {
+  margin-bottom: 40px;
+}
+
+.carousel-row h2 {
+  margin-bottom: 10px;
+  color: #388e3c;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.carousel-item {
+  min-width: 200px;
+  height: 150px;
+  margin-right: 10px;
+  background-color: #a5d6a7;
+  border-radius: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #66bb6a;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  border-radius: 4px;
+}
+
+button.prev:hover:not(:disabled),
+button.next:hover:not(:disabled) {
+  background-color: #43a047;
+  transform: translateY(-50%) scale(1.1);
+}
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
+}
+
+/* Estilos para responsividade (opcional, mas recomendado) */
+@media (max-width: 768px) {
+  .carousel-item {
+    min-width: 90%; /* Ocupa quase toda a largura em telas menores */
+    margin-right: 5%;
+  }
+}
+
+/* Estilo para botões desabilitados */
+button.prev:disabled,
+button.next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Ajuste para que os botões fiquem sobre o carrossel */
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}
+
+/* Adicionar padding ao carrossel para que os botões não fiquem sobre o primeiro/último item */
+.carousel {
+  padding: 0 40px; /* Espaço para os botões */
+}
+
+.carousel-track {
+  margin-left: -10px; /* Compensar a margem do primeiro item para alinhamento */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o item sem distorção */
+  border-radius: 8px;
+}
+
+/* Remover a cor de fundo do item, já que agora temos imagens */
+.carousel-item {
+  background-color: transparent;
+}
+
+/* Animação de fade-in para os itens do carrossel */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-item {
+  animation: fadeIn 0.6s ease-in;
+}

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Carla: Biologia que Transforma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        
+        header {
+            background: linear-gradient(135deg, #2e7d32 0%, #4caf50 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        /* Seções */
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .about {
+            background-color: white;
+        }
+        
+        .testimonials {
+            background-color: #e8f5e9;
+        }
+        
+        .qualities {
+            background-color: white;
+        }
+        
+        .inspiration {
+            background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+            color: white;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2e7d32;
+        }
+        
+        .inspiration h2 {
+            color: white;
+        }
+        /* Cards */
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card {
+            border-left: 5px solid #4caf50;
+        }
+        
+        .quality-card {
+            text-align: center;
+            border-top: 5px solid #4caf50;
+        }
+        
+        .quality-icon {
+            font-size: 3rem;
+            color: #4caf50;
+            margin-bottom: 20px;
+        }
+        /* Citação */
+        
+        blockquote {
+            font-style: italic;
+            position: relative;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        blockquote::before {
+            content: "";
+            font-size: 4rem;
+            color: #4caf50;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+        /* Elementos biológicos */
+        
+        .bio-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .cell {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        .cell:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .cell:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: -3s;
+        }
+        
+        .cell:nth-child(3) {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: -6s;
+        }
+        
+        .cell:nth-child(4) {
+            bottom: 25%;
+            right: 10%;
+            animation-delay: -9s;
+        }
+        
+        .cell:nth-child(5) {
+            top: 50%;
+            left: 5%;
+            animation-delay: -12s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        /* Imagens de biologia */
+        
+        .biology-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .bio-img {
+            width: 200px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .bio-img:hover {
+            transform: scale(1.05);
+        }
+        /* Footer */
+        
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        /* Responsividade */
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            section {
+                padding: 50px 0;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            .bio-img {
+                width: 150px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="bio-elements">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="container header-content">
+            <h1>Ana Carla: Biologia que Transforma</h1>
+            <p class="subtitle">Professora de Biologia e Práticas Experimentais que inspira seus alunos todos os dias</p>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="container">
+            <h2>Sobre a Professora</h2>
+            <div class="card">
+                <p>Ana Carla é professora de Biologia e Práticas Experimentais e dá aula com muito carinho no Colégio Estadual José Bonifácio e no IEE Dr. Caetano Munhoz da Rocha.</p>
+                <p>Ela escolheu ser professora porque acredita que é uma profissão de respeito, especialmente para as mulheres — e também porque adora estar com os jovens.</p>
+                <p>Dar aula pra ela é mais do que ensinar: é trocar ideias, aprender junto e fazer parte da vida dos alunos. Nas suas aulas, ela sempre busca trazer experiências práticas e tornar a Biologia algo vivo e interessante, com muita curiosidade
+                    e mão na massa.</p>
+                <p>Com seu jeito acolhedor e cheio de energia, Ana Carla inspira seus alunos todos os dias e mostra que ensinar pode ser uma das formas mais bonitas de transformar o mundo.</p>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <section class="qualities">
+        <div class="container">
+            <h2>Galeria de Fotos</h2>
+            <div class="carousel-row">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-item"><img src="0.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="1.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="2.jpg" alt="Imagem de Natureza 2"></div>
+                        <div class="carousel-item"><img src="3.jpg" alt="Imagem de Natureza 3"></div>
+                        <div class="carousel-item"><img src="4.jpg" alt="Imagem de Natureza 4"></div>
+                        <div class="carousel-item"><img src="5.jpg" alt="Imagem de Natureza 5"></div>
+
+                        <div class="carousel-item"><img src="0.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="1.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="2.jpg" alt="Imagem de Natureza 2"></div>
+                        <div class="carousel-item"><img src="3.jpg" alt="Imagem de Natureza 3"></div>
+                        <div class="carousel-item"><img src="4.jpg" alt="Imagem de Natureza 4"></div>
+                        <div class="carousel-item"><img src="5.jpg" alt="Imagem de Natureza 5"></div>
+
+
+                    </div>
+                    <button class="prev">‹</button>
+                    <button class="next">›</button>
+                </div>
+            </div>
+
+            <div class="carousel-row">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-item"><img src="7.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="8.jpg" alt="Imagem de Natureza 2"></div>
+                        <div class="carousel-item"><img src="9.jpg" alt="Imagem de Natureza 3"></div>
+                        <div class="carousel-item"><img src="11.jpg" alt="Imagem de Natureza 4"></div>
+                        <div class="carousel-item"><img src="12.jpg" alt="Imagem de Natureza 5"></div>
+
+                        <div class="carousel-item"><img src="7.jpg" alt="Imagem de Natureza 1"></div>
+                        <div class="carousel-item"><img src="8.jpg" alt="Imagem de Natureza 2"></div>
+                        <div class="carousel-item"><img src="9.jpg" alt="Imagem de Natureza 3"></div>
+                        <div class="carousel-item"><img src="11.jpg" alt="Imagem de Natureza 4"></div>
+                        <div class="carousel-item"><img src="12.jpg" alt="Imagem de Natureza 5"></div>
+
+                    </div>
+                    <button class="prev">‹</button>
+                    <button class="next">›</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>O que ela é para nós</h2>
+            <div class="carousel-row">
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Ana é uma ótima professora que aparenta ter um amor real pela matéria e para dar aula, além de explicar muito bem"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Ela é uma das únicas professoras que parece preparada para dar aula para a turma"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Ela é uma professora incrível e extremamente amável, as aulas dela são as melhores"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Além de ser muito simpática, a Prof Ana Carla é uma ótima profissional e ensina muito bem sua matéria"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Você não apenas ensina matérias, você forma cidadãos e ajuda a construir sonhos"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Admiro a paciência dela de me explicar várias vezes até que eu entenda o conteúdo"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Professora é uma professora didática, atenciosa, bondosa e uma professora incrível"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"É uma professora muito dedicada que consegue puxar o interesse dos alunos e explicar muito bem, apesar de ser difícil a matéria"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Gratidão por cada ensinamento!"</blockquote>
+                            </div>
+                        </div>
+                        <div class="carousel-testimonial-item">
+                            <div class="card testimonial-card">
+                                <blockquote>"Você faz a diferença todos os dias."</blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev">‹</button>
+                    <button class="next">›</button>
+                </div>
+    </section>
+
+    <style>
+        .carousel-row {
+            margin-bottom: 40px;
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-testimonial-item {
+            flex: 0 0 33.333%;
+            padding: 15px;
+        }
+        
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(76, 175, 80, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s;
+        }
+        
+        .carousel button:hover {
+            background: rgba(76, 175, 80, 1);
+        }
+        
+        .carousel .prev {
+            left: 10px;
+        }
+        
+        .carousel .next {
+            right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-testimonial-item {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.testimonials .carousel');
+            const track = carousel.querySelector('.carousel-track');
+            const items = carousel.querySelectorAll('.carousel-testimonial-item');
+            const prevBtn = carousel.querySelector('.prev');
+            const nextBtn = carousel.querySelector('.next');
+
+            let currentIndex = 0;
+            const itemsPerView = window.innerWidth <= 768 ? 1 : 3;
+
+            function updateCarousel() {
+                const itemWidth = 100 / itemsPerView;
+                track.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = Math.floor(items.length / itemsPerView) - 1;
+                }
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < Math.floor(items.length / itemsPerView) - 1) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            });
+
+            window.addEventListener('resize', () => {
+                const newItemsPerView = window.innerWidth <= 768 ? 1 : 3;
+                if (newItemsPerView !== itemsPerView) {
+                    currentIndex = 0;
+                    updateCarousel();
+                }
+            });
+
+            updateCarousel();
+        });
+    </script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
